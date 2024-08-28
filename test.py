@@ -36,16 +36,22 @@ class TestWebhookProcessor(unittest.TestCase):
 
     @patch("webhook_processor.WebhookProcessor._send_webhook", return_value=True)
     def test_process_webhooks_correct_success_response(self, mock_send_webhook):
-        webhook = Webhook(
-            order_id=1, event="test_event", name="Test", url="https://example.com"
-        )
-        processor = WebhookProcessor(
-            max_delay_time=0.5, initial_delay_time=0.1, exponential_backoff_factor=3
-        )
+        webhooks = []
+        max_webhooks = 10**4
+        for i in range(0, max_webhooks):
+            webhooks.append(
+                Webhook(
+                    order_id=i,
+                    event="test_event",
+                    name="Test",
+                    url="https://example.com",
+                )
+            )
+        processor = WebhookProcessor()
 
-        processor.process_webhooks([webhook])
+        processor.process_webhooks(webhooks)
 
-        self.assertEqual(mock_send_webhook.call_count, 1)
+        self.assertEqual(mock_send_webhook.call_count, max_webhooks)
 
 
 if __name__ == "__main__":
