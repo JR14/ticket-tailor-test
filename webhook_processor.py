@@ -101,8 +101,6 @@ class WebhookProcessor:
             current_time = time.time()
 
             if current_time < current_prioritized_webhook.next_retry_time:
-                logger.info(current_time)
-                logger.info(current_prioritized_webhook.next_retry_time)
                 time.sleep(current_prioritized_webhook.next_retry_time - current_time)
 
             if self._send_webhook(webhook):
