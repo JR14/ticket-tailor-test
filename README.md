@@ -1,14 +1,14 @@
 # Ticket Tailor Test
 
 ## Setup
-To run this project, download all files and run the following commands in the terminal:
+To run this project, download all files and run the following commands in the project root of the terminal/command line:
 ```
 pip install -r requirements.txt
 python main.py
 ```
 
 ## Tests
-To do tests run the following command:
+To do tests run the following command in the project root of the terminal/command line:
 `python test.py`
 
 ## Design Decisions
