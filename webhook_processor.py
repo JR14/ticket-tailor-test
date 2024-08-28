@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 
 class WebhookProcessor:
-    def __init__(
+    def __init__(  # all times are in seconds
         self,
         max_delay_time: int = 60,
         initial_delay_time: int = 1,
