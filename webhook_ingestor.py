@@ -4,7 +4,7 @@ from webhook import Webhook
 
 def _parse_row(row: dict) -> Webhook:
     return Webhook(
-        url=row["URL"].strip(),
+        url=row["URL"],
         order_id=row["ORDER ID"],
         name=row["NAME"],
         event=row["EVENT"],

@@ -1,7 +1,6 @@
 import logging
 import time
 import heapq
-from urllib.parse import ParseResult
 from typing import Dict, List, Set
 import requests
 
@@ -48,7 +47,7 @@ class WebhookProcessor:
         self,
         prioritized_webhook: PrioritizedWebhook,
         queue: List[PrioritizedWebhook],
-        failure_tracker: Dict[ParseResult, int],
+        failure_tracker: Dict[str, int],
     ) -> None:
         new_delay = (
             prioritized_webhook.seconds_until_next_attempt
@@ -73,7 +72,7 @@ class WebhookProcessor:
             )
 
     def process_webhooks(self, webhooks: Set[Webhook]) -> None:
-        failure_tracker: Dict[ParseResult, int] = {}
+        failure_tracker: Dict[str, int] = {}
         queue: List[PrioritizedWebhook] = []
 
         for webhook in webhooks:

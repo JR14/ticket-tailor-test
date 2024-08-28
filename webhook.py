@@ -1,10 +1,9 @@
 from dataclasses import dataclass, field
-from urllib.parse import ParseResult
 
 
 @dataclass
 class Webhook:
-    url: ParseResult
+    url: str
     order_id: int
     name: str
     event: str
